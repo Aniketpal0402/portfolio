@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import SmoothScroll from "./components/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +26,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* app/layout.tsx */}
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Staatliches&family=Stint+Ultra+Condensed&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Navbar></Navbar>
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
