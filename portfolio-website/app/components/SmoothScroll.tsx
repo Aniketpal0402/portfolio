@@ -6,10 +6,6 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   useLayoutEffect(() => {
     const lenis = new Lenis({
       duration: 1.1,
-      smooth: true,
-      smoothTouch: false,
-      direction: "vertical",
-      gestureDirection: "vertical",
       touchMultiplier: 1.2,
       wheelMultiplier: 1,
       lerp: 0.1, // lower = more smoothing
@@ -30,7 +26,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
         const href = (anchor as HTMLAnchorElement).getAttribute("href");
         if (!href) return;
         const el = document.querySelector(href);
-        if (el) {
+        if (el && el instanceof HTMLElement) {
           e.preventDefault();
           lenis.scrollTo(el, { offset: 0 });
         }
